@@ -1,23 +1,27 @@
 ### Hi, I'm Ian 👋
 
-I build production data infrastructure — streaming ingestion, layered warehouses, and the observability that keeps them honest. Lately I've been putting LLMs into production systems, which turns out to be mostly a systems engineering problem.
+I build production data infrastructure — streaming ingestion, layered warehouses, dashboards for self-serve analytics, and the observability that keeps them honest. Lately I've been putting LLMs into production systems, which turns out to be mostly a systems engineering problem.
 
 ---
 
 ### Selected work
 
-**1. Real-time telemetry platform**
+**Real-time telemetry platform** · *open source*
+
 Kafka → TimescaleDB + MinIO, with Prometheus/Grafana dashboards, four chaos-injected failure scenarios, and a runbook covering detection through prevention.
 
 The question it was built to answer: *when consumer lag rises, is it load or backpressure?* Turns out throughput is the discriminator — lag up with throughput up means load; lag up with throughput flat means something downstream is stalling.
 
-**2. 0→1 KYC event pipeline** · *production*
+**0→1 KYC event pipeline** · *production*
+
 Stripe webhooks are at-least-once by design. Converged to exactly-once using `event_id` as an idempotency key, with the dedup record and state transition committed in the same transaction — so "processed" and "applied" can't diverge. Replaced manual review for 500+ customers.
 
-**3. Layered Snowflake warehouse** · *production*
+**Layered Snowflake warehouse** · *production*
+
 RAW → STAGING → MART on dbt and Airflow. Watermark-based incremental extraction with partition-key upserts, so reruns and backfills never produce duplicates.
 
-**4. LLM operations assistant** · *production*
+**LLM operations assistant** · *production*
+
 A tool-calling agent on WhatsApp handling merchant onboarding and bookings. The hard part isn't the API — it's conversation state, idempotent side effects, and permission boundaries that keep an unreliable model from corrupting business data.
 
 ---
