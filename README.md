@@ -6,7 +6,7 @@ I build production data infrastructure — streaming ingestion, layered warehous
 
 ### Selected work
 
-**[Real-time telemetry platform](https://github.com/jasonmar310/garmin-style-recovery-platform)**
+**Real-time telemetry platform**
 Kafka → TimescaleDB + MinIO, with Prometheus/Grafana dashboards, four chaos-injected failure scenarios, and a runbook covering detection through prevention.
 
 The question it was built to answer: *when consumer lag rises, is it load or backpressure?* Turns out throughput is the discriminator — lag up with throughput up means load; lag up with throughput flat means something downstream is stalling.
