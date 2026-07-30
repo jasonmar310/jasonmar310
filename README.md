@@ -6,18 +6,18 @@ I build production data infrastructure — streaming ingestion, layered warehous
 
 ### Selected work
 
-**Real-time telemetry platform**
+**1. Real-time telemetry platform**
 Kafka → TimescaleDB + MinIO, with Prometheus/Grafana dashboards, four chaos-injected failure scenarios, and a runbook covering detection through prevention.
 
 The question it was built to answer: *when consumer lag rises, is it load or backpressure?* Turns out throughput is the discriminator — lag up with throughput up means load; lag up with throughput flat means something downstream is stalling.
 
-**0→1 KYC event pipeline** · *production*
+**2. 0→1 KYC event pipeline** · *production*
 Stripe webhooks are at-least-once by design. Converged to exactly-once using `event_id` as an idempotency key, with the dedup record and state transition committed in the same transaction — so "processed" and "applied" can't diverge. Replaced manual review for 500+ customers.
 
-**Layered Snowflake warehouse** · *production*
+**3. Layered Snowflake warehouse** · *production*
 RAW → STAGING → MART on dbt and Airflow. Watermark-based incremental extraction with partition-key upserts, so reruns and backfills never produce duplicates.
 
-**LLM operations assistant** · *production*
+**4. LLM operations assistant** · *production*
 A tool-calling agent on WhatsApp handling merchant onboarding and bookings. The hard part isn't the API — it's conversation state, idempotent side effects, and permission boundaries that keep an unreliable model from corrupting business data.
 
 ---
@@ -35,5 +35,3 @@ Guarantees belong in the system, not in the discipline of whoever uses it. Appli
 ---
 
 M.S. Applied Data Analytics, Boston University
-
-📧 marso1998@gmail.com · [LinkedIn](https://www.linkedin.com/in/jialiang-ma)
